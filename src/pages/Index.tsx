@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench } from "lucide-react";
+import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const skills = [
   "AVEVA Wonderware System Platform",
@@ -26,10 +27,22 @@ const tools = [
 ];
 
 const Index = () => {
+  const { theme, setTheme } = useTheme();
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Print Button */}
-      <div className="no-print fixed top-4 right-4 z-50">
+      {/* Print Button & Dark Mode Toggle */}
+      <div className="no-print fixed top-4 right-4 z-50 flex gap-2">
+        <Button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          variant="outline"
+          size="icon"
+          className="shadow-md bg-card"
+        >
+          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
         <Button onClick={() => window.print()} variant="outline" size="sm" className="gap-2 shadow-md bg-card">
           <Printer size={16} />
           Download / Print
