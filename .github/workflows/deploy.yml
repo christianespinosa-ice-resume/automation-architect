@@ -19,7 +19,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci   # Clean install
-      - run: npm run build -- --mode production   # Force prod mode
+      - run: npm run build   # Force prod mode
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
