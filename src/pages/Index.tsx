@@ -49,10 +49,12 @@ const ContactForm = () => {
       return;
     }
     setSending(true);
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      message: formData.message.trim(),
+    const { error } = await supabase.functions.invoke("send-contact-email", {
+      body: {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+      },
     });
     if (error) {
       toast.error("Failed to send message. Please try again.");
