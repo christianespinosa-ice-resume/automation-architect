@@ -57,6 +57,16 @@ const isaCertifications = [
   { name: "(IC37M01) Review of Assess Phase", date: "23 Oct 2022", ceu: "0.5" },
 ];
 
+const wonderwareCertifications = [
+  { name: "Wonderware Application Developer for CSI Application Server 2017 Update 3", date: "01 Apr 2020" },
+  { name: "Wonderware Application Developer for CSI Historian Server 2017 Update 3", date: "09 Apr 2020" },
+  { name: "Wonderware Application Developer for CSI InTouch for System Platform 2017 Update 3", date: "18 Apr 2020" },
+  { name: "Wonderware Application Developer for CSI Historian Client 2017 Update 3", date: "24 Apr 2020" },
+  { name: "Wonderware Application Developer for InTouch 11.1 - 2014 R2", date: "15 Jan 2018" },
+  { name: "Wonderware Application Developer for Application Server 4.1 - 2014 R2", date: "16 Jan 2018" },
+  { name: "Wonderware Application Developer for InTouch for System Platform 11.1 - 2014 R2", date: "18 Jan 2018" },
+];
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
@@ -330,6 +340,23 @@ const Index = () => {
                   <span className="text-xs text-muted-foreground">{cert.ceu} CEU</span>
                   <span className="text-xs font-semibold text-muted-foreground">{cert.date}</span>
                 </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <Separator className="mb-6" />
+
+        {/* Wonderware AVEVA Certifications */}
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
+            <Award size={14} /> Wonderware AVEVA Certifications
+          </h2>
+          <div className="space-y-2">
+            {wonderwareCertifications.map((cert) => (
+              <div key={cert.name} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 py-1.5 border-b border-border/50 last:border-0">
+                <p className="text-sm font-medium text-foreground">{cert.name}</p>
+                <span className="text-xs font-semibold text-muted-foreground shrink-0">{cert.date}</span>
               </div>
             ))}
           </div>
