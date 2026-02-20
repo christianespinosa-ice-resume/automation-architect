@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Printer, Briefcase, GraduationCap, Wrench, Sun, Moon, Send, Award } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -37,6 +37,19 @@ const tools = [
   "MS Visio",
   "MS Excel",
   "Industrial Networking Fundamentals",
+];
+
+const certifications = [
+  { name: "System Platform 2017 Update 3: Change Control and Propagation", date: "02 Jul 2021", ceu: "0.09" },
+  { name: "AVEVA™ InTouch HMI Web Client 2020 Preview", date: "03 Jul 2021", ceu: "0.1" },
+  { name: "InTouch HMI 2017: Application Publishing", date: "03 Jul 2021", ceu: "0.01" },
+  { name: "InTouch HMI 2017: Security Configuration Using OS Security", date: "03 Jul 2021", ceu: "0.01" },
+  { name: "System Platform 2017 Update 3: Historizing Attributes and Historical Visualization", date: "27 Jun 2021", ceu: "0.08" },
+  { name: "Alarm Logging 2014 R2 SP1 Rev B", date: "27 Jun 2021", ceu: "0.075" },
+  { name: "System Platform 2017 Update 3: Object I/O Access", date: "20 Jun 2021", ceu: "0.11" },
+  { name: "InTouch HMI 2017: Network Application Distribution", date: "20 Jun 2021", ceu: "0.05" },
+  { name: "InTouch HMI 2017: Application Backup and Restore", date: "01 Jun 2021", ceu: "0.05" },
+  { name: "System Platform 2017 Update 3: Galaxy Security", date: "30 May 2021", ceu: "0.25" },
 ];
 
 const ContactForm = () => {
@@ -273,6 +286,26 @@ const Index = () => {
               <Badge key={tool} variant="outline" className="text-xs font-medium px-3 py-1">
                 {tool}
               </Badge>
+            ))}
+          </div>
+        </motion.section>
+
+        <Separator className="mb-6" />
+
+        {/* AVEVA Certifications */}
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
+            <Award size={14} /> AVEVA Certificates of Achievement
+          </h2>
+          <div className="space-y-2">
+            {certifications.map((cert) => (
+              <div key={cert.name} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 py-1.5 border-b border-border/50 last:border-0">
+                <p className="text-sm font-medium text-foreground">{cert.name}</p>
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="text-xs text-muted-foreground">{cert.ceu} CEU</span>
+                  <span className="text-xs font-semibold text-muted-foreground">{cert.date}</span>
+                </div>
+              </div>
             ))}
           </div>
         </motion.section>
