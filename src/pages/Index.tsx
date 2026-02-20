@@ -52,6 +52,11 @@ const certifications = [
   { name: "System Platform 2017 Update 3: Galaxy Security", date: "30 May 2021", ceu: "0.25" },
 ];
 
+const isaCertifications = [
+  { name: "(IC34M01) Assessment Overview", date: "01 Oct 2022", ceu: "0.5" },
+  { name: "(IC37M01) Review of Assess Phase", date: "23 Oct 2022", ceu: "0.5" },
+];
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
@@ -311,6 +316,24 @@ const Index = () => {
         </motion.section>
 
         <Separator className="mb-6" />
+
+        {/* ISA Certifications */}
+        <motion.section className="mb-8" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
+            <Award size={14} /> ISA Certificates of Completion
+          </h2>
+          <div className="space-y-2">
+            {isaCertifications.map((cert) => (
+              <div key={cert.name} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 py-1.5 border-b border-border/50 last:border-0">
+                <p className="text-sm font-medium text-foreground">{cert.name}</p>
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="text-xs text-muted-foreground">{cert.ceu} CEU</span>
+                  <span className="text-xs font-semibold text-muted-foreground">{cert.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
 
         {/* Contact Form */}
         <ContactForm />
